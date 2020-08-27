@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.TapByMap" parent="Base.Theme.TapByMap" />
+
+    <style name="Base.Theme.TapByMap" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/primaryAccentColor</item>
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
+        <item name="android:windowBackground">@color/windowBackgroundColor</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/primaryDarkColor</item>
+        <item name="switchStyle">@style/Widget.MaterialComponents.CompoundButton.Switch</item>
+    </style>
+
+    <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/exit</item>
+        <item name="android:activityCloseExitAnimation">@anim/pop_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/pop_enter</item>
+    </style>
+
+    <!-- Toolbar theme -->
+    <style name="Theme.TapByMap.Toolbar" parent="Base.Theme.Toolbar" />
+
+    <style name="Base.Theme.Toolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="collapseIcon">@drawable/vector_ic_close_design_24dp</item>
+        <item name="elevation">5dp</item>
+        <item name="android:background">@color/primaryColor</item>
+    </style>
+</resources>

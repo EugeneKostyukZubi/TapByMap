@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_mavigation"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.eugene.tapbymap.presentation.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map"/>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.eugene.tapbymap.presentation.history.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history"/>
+    <action
+        android:id="@+id/main_action_global_mapFragment"
+        app:destination="@id/mapFragment"
+        app:enterAnim="@anim/pop_enter"
+        app:exitAnim="@anim/pop_exit"
+        app:popEnterAnim="@anim/enter"
+        app:popExitAnim="@anim/exit" />
+    <action
+        android:id="@+id/main_action_global_historyFragment"
+        app:destination="@id/historyFragment"
+        app:enterAnim="@anim/enter"
+        app:exitAnim="@anim/exit"
+        app:popEnterAnim="@anim/pop_enter"
+        app:popExitAnim="@anim/pop_exit" />
+</navigation>

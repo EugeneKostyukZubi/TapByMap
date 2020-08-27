@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TapByMap</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiZXVnZW5la29zdHl1a3Rlc3QiLCJhIjoiY2tlY200Z3FuMGpiczJzcnZiNWkwejJkMyJ9.s1J_Ab4YD3_tJJPJjJYtCg</string>
+    <string name="map">Map</string>
+    <string name="history">History</string>
+    <string name="nearest_place_template">Nearest place: %s</string>
+    <string name="address_template">Address: %s</string>
+    <string name="poi_template">Point of interest: %s</string>
+    <string name="was_not_defined">Was not defined</string>
+    <string name="default_text">Click on the action button to try to find the address of the point</string>
+</resources>
