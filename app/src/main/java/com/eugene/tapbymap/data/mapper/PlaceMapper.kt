@@ -11,6 +11,11 @@ import com.mapbox.api.geocoding.v5.models.CarmenFeature
  */
 class PlaceMapper {
 
+    /**
+     * To Transform from MapBoxPlacesResponse to Place
+     * @see MapBoxPlacesResponse
+     * @see Place
+     * */
     fun transform(mapBoxPlacesResponse: MapBoxPlacesResponse)
             : Place? = mapBoxPlacesResponse.let { response ->
         return mutableListOf<Place>().apply {
@@ -26,6 +31,11 @@ class PlaceMapper {
         }.firstOrNull()
     }
 
+    /**
+     * To Transform from FeatureEntity to Place
+     * @see FeatureEntity
+     * @see Place
+     * */
     fun transform(featureEntity: FeatureEntity) : Place = featureEntity.run {
         Place(
             text,
@@ -36,15 +46,33 @@ class PlaceMapper {
         )
     }
 
+    /**
+     * To Transform from CarmenFeature to Place
+     * @see CarmenFeature
+     * @see Place
+     * */
     fun transform(carmenFeature: CarmenFeature) : Place = carmenFeature.run {
         Place(
             text() ?: String.Empty,
             placeName() ?: String.Empty,
-            this.address(),
+            this.properties()?.get(PLACE_TYPE_ADDRESS)?.toString(),
             center()?.longitude() ?: 0.0,
             center()?.latitude() ?: 0.0
         )
     }
+
+    /**
+     * To merge two places with priority for first place
+     * Writes data from first place if it is not null
+     * Writes data from second place if data from first place is null
+     * */
+    fun merge(firstPlace : Place, secondPlace : Place) = Place(
+        firstPlace.title,
+        firstPlace.name,
+        firstPlace.address ?: secondPlace.address,
+        firstPlace.longitude,
+        firstPlace.latitude
+    )
 
     companion object {
         private const val PLACE_TYPE_ADDRESS = "address"

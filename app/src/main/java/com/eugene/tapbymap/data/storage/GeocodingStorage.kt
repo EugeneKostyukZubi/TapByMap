@@ -1,12 +1,9 @@
 package com.eugene.tapbymap.data.storage
 
-import android.util.Log
-import android.util.Log.d
 import com.eugene.tapbymap.data.api.MapBoxApi
 import com.eugene.tapbymap.data.mapbox.MapboxGeocodingProvider
 import com.eugene.tapbymap.data.mapper.PlaceMapper
 import com.eugene.tapbymap.exception.NotFoundException
-import com.eugene.tapbymap.extensions.Empty
 import com.eugene.tapbymap.model.Place
 import com.eugene.tapbymap.repository.GeocodingRepository
 import org.koin.core.KoinComponent
@@ -26,9 +23,15 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         latitude: Double,
         accessToken: String
     ): Place {
-        return getFromApi(longitude, latitude, accessToken)
+        return getFromSdk(longitude, latitude, accessToken)
     }
 
+    /**
+     * To try to find address of the specific point
+     *
+     * @return reversed place by address type
+     * */
+    @Deprecated("Using sdk implementation")
     private suspend fun getFromApi(
         longitude: Double,
         latitude: Double,
@@ -42,6 +45,12 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         }
     }
 
+    /**
+     * To try to find address of the specific point
+     *
+     * @return reversed place by address type if it is possible or
+     * geocode by POI type
+     * */
     private suspend fun getFromSdk(
         longitude: Double,
         latitude: Double,
@@ -58,7 +67,7 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
     ) : Place? {
         return mapboxGeocodingProvider.reverseGeocodeAddress(
             longitude, latitude, accessToken
-        ).takeIf { it?.address() != null }
+        ).takeIf { it?.properties()?.has(ADDRESS_KEY) ?: false }
             ?.run {
                 placeMapper.transform(this)
             }
@@ -76,4 +85,7 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         } ?: throw NotFoundException
     }
 
+    companion object {
+        private const val ADDRESS_KEY = "address"
+    }
 }
