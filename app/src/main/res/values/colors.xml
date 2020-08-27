@@ -12,4 +12,6 @@
 
     <color name="bottomNavigationItemColor">#454554</color>
     <color name="bottomNavigationSelectedItemColor">#FFFFFF</color>
+
+    <color name="searchHistoryTextColor">#000000</color>
 </resources>

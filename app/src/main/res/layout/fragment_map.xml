@@ -30,8 +30,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:paddingTop="15dp"
-                android:padding="5dp"/>
+                android:paddingTop="15dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/placeAddressTextView"
@@ -41,7 +40,7 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"/>
+                android:paddingBottom="5dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/placeNameTextView"
@@ -50,7 +49,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:paddingBottom="15dp"/>
+                android:paddingBottom="15dp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
