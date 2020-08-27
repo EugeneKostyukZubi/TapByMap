@@ -1,12 +1,14 @@
 package com.eugene.tapbymap.presentation.map
 
 import android.content.Context
+import android.util.Log.d
 import com.eugene.tapbymap.R
 import com.eugene.tapbymap.base.BaseViewModel
 import com.eugene.tapbymap.base.Event
 import com.eugene.tapbymap.extensions.event
 import com.eugene.tapbymap.model.Place
 import com.eugene.tapbymap.repository.GeocodingRepository
+import com.eugene.tapbymap.repository.PlaceRepository
 import kotlinx.coroutines.launch
 import org.koin.core.inject
 
@@ -16,6 +18,7 @@ import org.koin.core.inject
 class MapViewModel : BaseViewModel() {
 
     private val geocodingRepository: GeocodingRepository by inject()
+    private val placeRepository: PlaceRepository by inject()
 
     val onPlaceFoundEvent = event<Place>()
 
@@ -29,6 +32,7 @@ class MapViewModel : BaseViewModel() {
             geocodingRepository.getPlaces(
                 longitude, latitude, accessToken
             ).run {
+                placeRepository.addPlaceToHistory(this)
                 onPlaceFoundEvent.postValue(
                     Event(
                         handlePlace(context, this)

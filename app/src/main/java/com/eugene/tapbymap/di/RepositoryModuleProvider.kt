@@ -3,6 +3,8 @@ package com.eugene.tapbymap.di
 import com.eugene.tapbymap.di.base.ModuleProvider
 import com.eugene.tapbymap.repository.GeocodingRepository
 import com.eugene.tapbymap.data.storage.GeocodingStorage
+import com.eugene.tapbymap.data.storage.PlaceStorage
+import com.eugene.tapbymap.repository.PlaceRepository
 import org.koin.dsl.module
 
 /**
@@ -11,5 +13,6 @@ import org.koin.dsl.module
 object RepositoryModuleProvider : ModuleProvider {
     override fun provide() = module {
         single<GeocodingRepository> { GeocodingStorage() }
+        single<PlaceRepository> { PlaceStorage() }
     }
 }
