@@ -7,8 +7,8 @@ import com.eugene.tapbymap.model.Place
  */
 interface GeocodingRepository {
     suspend fun getPlaces(
-        longitude : Double,
-        latitude : Double,
-        accessToken : String
-    ) : Place
+        longitude: Double,
+        latitude: Double,
+        accessToken: String
+    ): Place
 }

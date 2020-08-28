@@ -9,7 +9,7 @@ import com.eugene.tapbymap.data.api.entity.FeatureEntity
  *
  * @link https://docs.mapbox.com/api/search/#geocoding
  * */
-data class MapBoxPlacesResponse (
+data class MapBoxPlacesResponse(
     val type: String,
     val query: List<Double>,
     val features: List<FeatureEntity>,

@@ -14,9 +14,9 @@ import org.koin.core.inject
  */
 class GeocodingStorage : GeocodingRepository, KoinComponent {
 
-    private val mapBoxApi : MapBoxApi by inject()
-    private val mapboxGeocodingProvider : MapboxGeocodingProvider by inject()
-    private val placeMapper : PlaceMapper by inject()
+    private val mapBoxApi: MapBoxApi by inject()
+    private val mapboxGeocodingProvider: MapboxGeocodingProvider by inject()
+    private val placeMapper: PlaceMapper by inject()
 
     override suspend fun getPlaces(
         longitude: Double,
@@ -36,7 +36,7 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         longitude: Double,
         latitude: Double,
         accessToken: String
-    ) : Place {
+    ): Place {
         return mapBoxApi.getPlaces(
             longitude, latitude, accessToken
         ).run {
@@ -55,7 +55,7 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         longitude: Double,
         latitude: Double,
         accessToken: String
-    ) : Place {
+    ): Place {
         return reverseGeocodeAddress(longitude, latitude, accessToken)
             ?: reverseGeocodePoi(longitude, latitude, accessToken)
     }
@@ -64,7 +64,7 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         longitude: Double,
         latitude: Double,
         accessToken: String
-    ) : Place? {
+    ): Place? {
         return mapboxGeocodingProvider.reverseGeocodeAddress(
             longitude, latitude, accessToken
         ).takeIf { it?.properties()?.has(ADDRESS_KEY) ?: false }
@@ -77,7 +77,7 @@ class GeocodingStorage : GeocodingRepository, KoinComponent {
         longitude: Double,
         latitude: Double,
         accessToken: String
-    ) : Place {
+    ): Place {
         return mapboxGeocodingProvider.reverseGeocodePoi(
             longitude, latitude, accessToken
         )?.run {

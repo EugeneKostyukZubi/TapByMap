@@ -16,13 +16,15 @@ class TapByMapApplication : Application() {
         // start Koin context
         startKoin {
             androidContext(this@TapByMapApplication)
-            modules(listOf(
-                ApiModuleProvider.provide(),
-                MapperModuleProvider.provide(),
-                RepositoryModuleProvider.provide(),
-                ViewModelModuleProvider.provide(),
-                DataProviderModuleProvider.provide()
-            ))
+            modules(
+                listOf(
+                    ApiModuleProvider.provide(),
+                    MapperModuleProvider.provide(),
+                    RepositoryModuleProvider.provide(),
+                    ViewModelModuleProvider.provide(),
+                    DataProviderModuleProvider.provide()
+                )
+            )
         }
     }
 }

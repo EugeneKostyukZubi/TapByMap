@@ -34,7 +34,7 @@ class MapFragment : BaseToolbarFragment() {
 
     private var mapBox: MapboxMap? = null
 
-    private val viewModel : MapViewModel by viewModel()
+    private val viewModel: MapViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,7 +74,7 @@ class MapFragment : BaseToolbarFragment() {
         }
 
         viewModel.onErrorEvent.observeEvent(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is NotFoundException -> showToast(getString(R.string.not_found))
                 else -> showToast(it.message ?: getString(R.string.something_went_wrong))
             }
@@ -87,7 +87,8 @@ class MapFragment : BaseToolbarFragment() {
             mapBoxMap.setStyle(Style.MAPBOX_STREETS) {
                 runWithPermissions(
                     Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION) {
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) {
                     enableLocationComponent(it)
                 }
             }
@@ -104,7 +105,7 @@ class MapFragment : BaseToolbarFragment() {
         }
     }
 
-    private fun getActivatedLocationComponent(style: Style) : LocationComponent? {
+    private fun getActivatedLocationComponent(style: Style): LocationComponent? {
         return mapBox?.locationComponent?.apply {
             activateLocationComponent(
                 LocationComponentActivationOptions.Builder(
@@ -122,7 +123,10 @@ class MapFragment : BaseToolbarFragment() {
             .bearing(DEFAULT_CAMERA_BEARING)
             .build()
 
-        mapBox?.animateCamera(CameraUpdateFactory.newCameraPosition(position), DEFAULT_CAMERA_ANIMATION_DURATION)
+        mapBox?.animateCamera(
+            CameraUpdateFactory.newCameraPosition(position),
+            DEFAULT_CAMERA_ANIMATION_DURATION
+        )
     }
 
     companion object {

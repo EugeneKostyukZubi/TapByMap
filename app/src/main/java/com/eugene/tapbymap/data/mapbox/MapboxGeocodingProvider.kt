@@ -21,7 +21,7 @@ class MapboxGeocodingProvider {
         longitude: Double,
         latitude: Double,
         accessToken: String
-    ) : CarmenFeature? = reverseGeocode(
+    ): CarmenFeature? = reverseGeocode(
         longitude,
         latitude,
         accessToken,
@@ -32,7 +32,7 @@ class MapboxGeocodingProvider {
         longitude: Double,
         latitude: Double,
         accessToken: String
-    ) : CarmenFeature? = reverseGeocode(
+    ): CarmenFeature? = reverseGeocode(
         longitude,
         latitude,
         accessToken,
@@ -69,7 +69,12 @@ class MapboxGeocodingProvider {
             )
         }
 
-    private fun getGeocodingClient(longitude: Double, latitude: Double, accessToken: String, type: String) =
+    private fun getGeocodingClient(
+        longitude: Double,
+        latitude: Double,
+        accessToken: String,
+        type: String
+    ) =
         MapboxGeocoding.builder()
             .accessToken(accessToken)
             .query(Point.fromLngLat(longitude, latitude))

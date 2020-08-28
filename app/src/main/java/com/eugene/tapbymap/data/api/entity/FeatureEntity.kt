@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by Eugene on 27.08.2020
  */
-data class FeatureEntity (
+data class FeatureEntity(
     val id: String,
     val type: String,
     @SerializedName("place_type")

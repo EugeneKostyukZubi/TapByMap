@@ -18,6 +18,7 @@ class HistoryViewModel : BaseViewModel() {
 
     /* List of places for recycler view */
     val places = mutable<List<Place>>(emptyList())
+
     /* Last selected place in recycler view */
     val selectedPlace = mutable<Place>()
 

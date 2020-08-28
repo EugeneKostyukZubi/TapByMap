@@ -21,8 +21,9 @@ class PlaceMapper {
         return mutableListOf<Place>().apply {
             response.features.forEach { feature ->
                 feature
-                    .takeIf { it.id.contains(PLACE_TYPE_ADDRESS)
-                            it.id.contains(POI_TYPE_ADDRESS)
+                    .takeIf {
+                        it.id.contains(PLACE_TYPE_ADDRESS) or
+                        it.id.contains(POI_TYPE_ADDRESS)
                     }
                     ?.run {
                         add(transform(feature))
@@ -36,12 +37,12 @@ class PlaceMapper {
      * @see FeatureEntity
      * @see Place
      * */
-    fun transform(featureEntity: FeatureEntity) : Place = featureEntity.run {
+    fun transform(featureEntity: FeatureEntity): Place = featureEntity.run {
         Place(
             text,
             placeName,
             properties.address,
-            this.center[0] /* latitude */ ,
+            this.center[0] /* latitude */,
             this.center[1] /* longitude */
         )
     }
@@ -51,7 +52,7 @@ class PlaceMapper {
      * @see CarmenFeature
      * @see Place
      * */
-    fun transform(carmenFeature: CarmenFeature) : Place = carmenFeature.run {
+    fun transform(carmenFeature: CarmenFeature): Place = carmenFeature.run {
         Place(
             text() ?: String.Empty,
             placeName() ?: String.Empty,
@@ -60,19 +61,6 @@ class PlaceMapper {
             center()?.latitude() ?: 0.0
         )
     }
-
-    /**
-     * To merge two places with priority for first place
-     * Writes data from first place if it is not null
-     * Writes data from second place if data from first place is null
-     * */
-    fun merge(firstPlace : Place, secondPlace : Place) = Place(
-        firstPlace.title,
-        firstPlace.name,
-        firstPlace.address ?: secondPlace.address,
-        firstPlace.longitude,
-        firstPlace.latitude
-    )
 
     companion object {
         private const val PLACE_TYPE_ADDRESS = "address"

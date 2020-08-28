@@ -1,7 +1,7 @@
 package com.eugene.tapbymap.di
 
-import com.eugene.tapbymap.di.base.ModuleProvider
 import com.eugene.tapbymap.data.mapper.PlaceMapper
+import com.eugene.tapbymap.di.base.ModuleProvider
 import org.koin.dsl.module
 
 /**

@@ -17,10 +17,11 @@ class MainActivity :
     override val contentView = R.layout.activity_main
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.map -> navigationController.navigate(MainNavigation.mapNavigationId)
             R.id.history -> navigationController.navigate(MainNavigation.historyNavigationId)
-            else -> { /* Nothing to do here */ }
+            else -> { /* Nothing to do here */
+            }
         }
         return true
     }

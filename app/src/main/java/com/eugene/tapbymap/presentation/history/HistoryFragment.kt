@@ -23,7 +23,7 @@ class HistoryFragment : BaseToolbarFragment() {
 
     override val optionsMenu = R.menu.history_menu
 
-    private val viewModel : HistoryViewModel by viewModel()
+    private val viewModel: HistoryViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +49,7 @@ class HistoryFragment : BaseToolbarFragment() {
 
     override fun bindUi() {
         viewModel.onErrorEvent.observeEvent(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is NotFoundException -> showToast(getString(R.string.not_found))
                 else -> showToast(it.message ?: getString(R.string.something_went_wrong))
             }
@@ -57,7 +57,7 @@ class HistoryFragment : BaseToolbarFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.remove -> viewModel.removeSearchHistory()
         }
         return super.onOptionsItemSelected(item)

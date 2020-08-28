@@ -36,13 +36,15 @@ abstract class BaseActivity : AppCompatActivity() {
      * It will be implemented in a child for common interaction with view model and views
      * It will be called in onCreate
      * */
-    open protected fun initUi() { /* Nothing to do here */ }
+    protected open fun initUi() { /* Nothing to do here */
+    }
 
     /**
      * It will be implemented in a child for common interaction with view model
      * It will be called in onCreate
      * */
-    open protected fun bindUi() { /* Nothing to do here */ }
+    protected open fun bindUi() { /* Nothing to do here */
+    }
 
     /**
      * Create Toast.makeText with data form arguments

@@ -16,7 +16,7 @@ class PreferencesHelper(private val context: Context) {
             Context.MODE_PRIVATE
         )
 
-    var searchHistory : List<Place>
+    var searchHistory: List<Place>
         get() {
             pref.getString(PLACES_HISTORY_KEY, String.Empty)?.run {
                 return Gson().fromJson(

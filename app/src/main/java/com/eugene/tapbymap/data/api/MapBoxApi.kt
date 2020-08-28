@@ -14,9 +14,9 @@ interface MapBoxApi {
 
     @GET("geocoding/v5/mapbox.places/{longitude},{latitude}.json")
     suspend fun getPlaces(
-        @Path("longitude") longitude : Double,
-        @Path("latitude") latitude : Double,
-        @Query("access_token") accessToken : String,
-        @Query("language") language : String? = null
-    ) : MapBoxPlacesResponse
+        @Path("longitude") longitude: Double,
+        @Path("latitude") latitude: Double,
+        @Query("access_token") accessToken: String,
+        @Query("language") language: String? = null
+    ): MapBoxPlacesResponse
 }

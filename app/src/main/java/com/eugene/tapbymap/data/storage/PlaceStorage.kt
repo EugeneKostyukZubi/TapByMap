@@ -11,7 +11,7 @@ import org.koin.core.inject
  */
 class PlaceStorage : PlaceRepository, KoinComponent {
 
-    private val preferencesHelper : PreferencesHelper by inject()
+    private val preferencesHelper: PreferencesHelper by inject()
 
     override suspend fun getSearchHistory(): List<Place> {
         return preferencesHelper.searchHistory
