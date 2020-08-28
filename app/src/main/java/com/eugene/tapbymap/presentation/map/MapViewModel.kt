@@ -1,7 +1,6 @@
 package com.eugene.tapbymap.presentation.map
 
 import android.content.Context
-import android.util.Log.d
 import com.eugene.tapbymap.R
 import com.eugene.tapbymap.base.BaseViewModel
 import com.eugene.tapbymap.base.Event
@@ -41,7 +40,7 @@ class MapViewModel : BaseViewModel() {
             }
         } catch (ex: Exception) {
             ex.printStackTrace()
-            errorEvent.postValue(Event(ex))
+            onErrorEvent.postValue(Event(ex))
         }
     }
 

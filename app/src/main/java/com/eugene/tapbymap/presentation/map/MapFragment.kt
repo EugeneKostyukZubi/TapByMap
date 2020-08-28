@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.eugene.tapbymap.R
 import com.eugene.tapbymap.base.BaseToolbarFragment
+import com.eugene.tapbymap.exception.NotFoundException
 import com.eugene.tapbymap.extensions.observeEvent
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import com.mapbox.mapboxsdk.Mapbox
@@ -70,6 +71,13 @@ class MapFragment : BaseToolbarFragment() {
             placeTextTextView.text = it.title
             placeAddressTextView.text = it.address
             placeNameTextView.text = it.name
+        }
+
+        viewModel.onErrorEvent.observeEvent(viewLifecycleOwner) {
+            when(it) {
+                is NotFoundException -> showToast(getString(R.string.not_found))
+                else -> showToast(it.message ?: getString(R.string.something_went_wrong))
+            }
         }
     }
 

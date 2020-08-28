@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import com.eugene.tapbymap.R
 import com.eugene.tapbymap.base.BaseToolbarFragment
 import com.eugene.tapbymap.databinding.FragmentHistoryBinding
+import com.eugene.tapbymap.exception.NotFoundException
+import com.eugene.tapbymap.extensions.observeEvent
 import kotlinx.android.synthetic.main.fragment_history.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,6 +45,15 @@ class HistoryFragment : BaseToolbarFragment() {
     override fun initUi() {
         searchHistoryRecyclerView.adapter = HistoryAdapter(R.layout.item_search_history)
         viewModel.getSearchHistory()
+    }
+
+    override fun bindUi() {
+        viewModel.onErrorEvent.observeEvent(viewLifecycleOwner) {
+            when(it) {
+                is NotFoundException -> showToast(getString(R.string.not_found))
+                else -> showToast(it.message ?: getString(R.string.something_went_wrong))
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

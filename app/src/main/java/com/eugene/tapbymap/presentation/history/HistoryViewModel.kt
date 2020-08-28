@@ -40,7 +40,7 @@ class HistoryViewModel : BaseViewModel() {
             }
         } catch (ex: Exception) {
             ex.printStackTrace()
-            errorEvent.postValue(Event(ex))
+            onErrorEvent.postValue(Event(ex))
         }
     }
 
@@ -51,7 +51,7 @@ class HistoryViewModel : BaseViewModel() {
             }
         } catch (ex: Exception) {
             ex.printStackTrace()
-            errorEvent.postValue(Event(ex))
+            onErrorEvent.postValue(Event(ex))
         }
     }
 }

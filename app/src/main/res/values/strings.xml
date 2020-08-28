@@ -9,4 +9,6 @@
     <string name="was_not_defined">Was not defined</string>
     <string name="default_text">Click on the action button to try to find the address of the point</string>
     <string name="remove">Remove</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="not_found">Not found</string>
 </resources>

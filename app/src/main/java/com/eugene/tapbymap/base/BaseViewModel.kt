@@ -11,5 +11,5 @@ import org.koin.core.KoinComponent
 abstract class BaseViewModel : CoroutineScopedViewModel(), KoinComponent {
 
     val isLoading = mutable(false)
-    val errorEvent = event<Exception>()
+    val onErrorEvent = event<Exception>()
 }
