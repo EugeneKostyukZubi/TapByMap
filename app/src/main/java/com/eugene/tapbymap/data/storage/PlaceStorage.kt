@@ -21,4 +21,7 @@ class PlaceStorage : PlaceRepository, KoinComponent {
         preferencesHelper.addPlaceToHistory(place)
     }
 
+    override suspend fun removeSearchHistory() {
+        preferencesHelper.removeSearchHistory()
+    }
 }

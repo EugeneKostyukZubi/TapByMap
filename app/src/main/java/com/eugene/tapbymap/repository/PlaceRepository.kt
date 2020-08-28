@@ -8,4 +8,5 @@ import com.eugene.tapbymap.model.Place
 interface PlaceRepository {
     suspend fun getSearchHistory() : List<Place>
     suspend fun addPlaceToHistory(place: Place)
+    suspend fun removeSearchHistory()
 }

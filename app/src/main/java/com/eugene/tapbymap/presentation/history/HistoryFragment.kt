@@ -2,6 +2,7 @@ package com.eugene.tapbymap.presentation.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -17,6 +18,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HistoryFragment : BaseToolbarFragment() {
 
     override val screenTitleRes = R.string.history
+
+    override val optionsMenu = R.menu.history_menu
 
     private val viewModel : HistoryViewModel by viewModel()
 
@@ -40,5 +43,12 @@ class HistoryFragment : BaseToolbarFragment() {
     override fun initUi() {
         searchHistoryRecyclerView.adapter = HistoryAdapter(R.layout.item_search_history)
         viewModel.getSearchHistory()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.remove -> viewModel.removeSearchHistory()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

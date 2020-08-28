@@ -44,4 +44,14 @@ class HistoryViewModel : BaseViewModel() {
         }
     }
 
+    fun removeSearchHistory() = launch {
+        try {
+            placeRepository.removeSearchHistory().run {
+                places.postValue(emptyList())
+            }
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            errorEvent.postValue(Event(ex))
+        }
+    }
 }

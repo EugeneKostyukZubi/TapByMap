@@ -33,6 +33,10 @@ class PreferencesHelper(private val context: Context) {
         searchHistory = searchHistory.plus(place)
     }
 
+    fun removeSearchHistory() {
+        pref.edit().putString(PLACES_HISTORY_KEY, String.Empty).apply()
+    }
+
     companion object {
         private const val PREFERENCES_NAME = "TapByMapPreferences"
         private const val PLACES_HISTORY_KEY = "places_history_key"
