@@ -10,7 +10,9 @@ import androidx.appcompat.widget.Toolbar
 import com.eugene.tapbymap.R
 import kotlinx.android.synthetic.main.toolbar_title.*
 
-
+/**
+ * Created by Eugene on 2019-11-16
+ */
 abstract class BaseToolbarActivity : BaseActivity() {
 
     final override val statusBarTransparent: Boolean = false

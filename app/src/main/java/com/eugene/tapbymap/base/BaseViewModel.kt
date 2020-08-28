@@ -7,7 +7,6 @@ import org.koin.core.KoinComponent
 /**
  * Created by Eugene on 2019-11-22
  */
-
 abstract class BaseViewModel : CoroutineScopedViewModel(), KoinComponent {
 
     val isLoading = mutable(false)

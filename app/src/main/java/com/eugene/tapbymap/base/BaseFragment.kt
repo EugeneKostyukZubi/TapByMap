@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 /**
  * Created by Eugene on 2019-11-16
  */
-
 open class BaseFragment : Fragment() {
 
     private var baseActivity: BaseActivity? = null

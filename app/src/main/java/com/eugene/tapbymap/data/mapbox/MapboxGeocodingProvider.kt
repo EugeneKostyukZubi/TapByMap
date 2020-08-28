@@ -17,6 +17,9 @@ import kotlin.coroutines.suspendCoroutine
  */
 class MapboxGeocodingProvider {
 
+    /**
+     * To try to find address for specific location
+     * */
     suspend fun reverseGeocodeAddress(
         longitude: Double,
         latitude: Double,
@@ -28,6 +31,9 @@ class MapboxGeocodingProvider {
         GeocodingCriteria.TYPE_ADDRESS
     )
 
+    /**
+     * To try to find point of interest for specific location
+     * */
     suspend fun reverseGeocodePoi(
         longitude: Double,
         latitude: Double,
